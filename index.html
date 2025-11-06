@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cámara PWA</title>
+    <link rel="manifest" href="./manifest.json">
+
+    <meta name="theme-color" content="#4A90E2">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="PWA DoCa">
+
+    <link rel="apple-touch-icon" href="./images/icons/192.png" sizes="192x192">
+    <style>
+        /* Galería inferior de miniaturas */
+        .gallery {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 96px;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            box-sizing: border-box;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .gallery img.thumb {
+            height: 80px;
+            border-radius: 4px;
+            object-fit: cover;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            cursor: pointer;
+        }
+
+        /* Ajuste para que el canvas no quede oculto por la galería */
+        body { padding-bottom: 110px; }
+    </style>
+</head>
+<body>
+
+    <h1>Cámara PWA</h1>
+    
+    <button id="openCamera">Abrir Cámara</button>
+    <button id="toggleCamera" style="display:none;">Cambiar cámara</button>
+
+    <div id="cameraContainer" style="display: none;">
+        <video id="video" autoplay playsinline width="320" height="240"></video>
+        <br>
+        <button id="takePhoto">Tomar Foto</button>
+    </div>
+
+    <canvas id="canvas" width="320" height="240" style="display: none;"></canvas>
+
+    <!-- Galería inferior de miniaturas -->
+    <div id="gallery" class="gallery" aria-label="Galería de fotos"></div>
+
+    <script src="./app.js"></script>
+</body>
+</html>
