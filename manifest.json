@@ -2,7 +2,7 @@
     "name": "Cámara PWA",
     "short_name": "CamaraPWA",
     "description": "Aplicación web progresiva que usa la cámara del dispositivo.",
-    "start_url": "/",
+    "start_url": "/camera_pwa/",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#333",
