@@ -41,6 +41,36 @@
 
         /* Ajuste para que el canvas no quede oculto por la galería */
         body { padding-bottom: 110px; }
+
+        /* Estilos para botones */
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #4A90E2;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #357ABD;
+        }
+
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        #toggleCamera {
+            background-color: #28a745;
+        }
+
+        #toggleCamera:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
@@ -48,7 +78,7 @@
     <h1>Cámara PWA</h1>
     
     <button id="openCamera">Abrir Cámara</button>
-    <button id="toggleCamera" style="display:none;">Cambiar cámara</button>
+    <button id="toggleCamera" style="display:none;">Cambiar Cámara</button>
 
     <div id="cameraContainer" style="display: none;">
         <video id="video" autoplay playsinline width="320" height="240"></video>

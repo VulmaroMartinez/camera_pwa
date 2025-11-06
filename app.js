@@ -52,14 +52,18 @@ async function openCamera() {
         // 3. Asignar el Stream al Elemento <video>
         video.srcObject = stream;
         
-        // 4. Actualización de la UI
+        // 4. Detectar cámaras disponibles después de obtener permisos
+        await detectFrontCamera();
+        
+        // 5. Actualización de la UI
         cameraContainer.style.display = 'block';
         openCameraBtn.textContent = 'Cámara Abierta';
         openCameraBtn.disabled = true;
-    // Mostrar botón de alternar cámara si existe cámara frontal
-    if (hasFront) toggleCameraBtn.style.display = 'inline-block';
+        // Mostrar botón de alternar cámara si existe cámara frontal
+        if (hasFront) toggleCameraBtn.style.display = 'inline-block';
         
         console.log('Cámara abierta exitosamente');
+        console.log('Cámaras disponibles:', hasFront ? 'Frontal y trasera' : 'Solo una cámara');
     } catch (error) {
         console.error('Error al acceder a la cámara:', error);
         alert('No se pudo acceder a la cámara. Asegúrate de dar permisos.');
@@ -151,10 +155,13 @@ async function detectFrontCamera() {
     try {
         const devices = await navigator.mediaDevices.enumerateDevices();
         const videoInputs = devices.filter(d => d.kind === 'videoinput');
+        console.log('Dispositivos de video encontrados:', videoInputs.length);
         if (videoInputs.length > 1) {
             hasFront = true;
+            console.log('Se detectaron múltiples cámaras');
         } else {
             hasFront = false;
+            console.log('Solo se detectó una cámara');
         }
     } catch (err) {
         console.warn('No se pudo enumerar dispositivos:', err);
