@@ -1,4 +1,4 @@
-const CACHE_NAME = 'camara-pwa-v3'; // Nombre/versión del caché
+const CACHE_NAME = 'camara-pwa-v4'; // Nombre/versión del caché
 const urlsToCache = [ // Lista de archivos a guardar en caché
     './',
     './index.html',
